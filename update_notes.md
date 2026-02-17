@@ -1,20 +1,19 @@
-# Human assistance
-I wont be home, so you will have to figure out everything yourself. I have given you all permissions, but if you get stuck somewhere and really do need my help you have to think of something else.
+# Contact Nikolai via Apple Notes
 
-# Contacting Nikolai via Apple Notes (iCloud sync)
-You can send messages to Nikolai's phone using Apple Notes via osascript. Notes sync instantly via iCloud.
+Send messages to Nikolai's phone through Apple Notes. Notes sync instantly via iCloud.
 
-## Creating a new note
+## Create a new note
+
 ```bash
 osascript -e 'tell application "Notes"
     make new note at folder "Notes" with properties {name:"Title", body:"<h1>Title</h1><br>Body text here"}
 end tell'
 ```
 
-## Updating an existing note
-- Notes uses the first line / `<h1>` tag as its display name
-- To find a note, search by name content: `first note whose name contains "keyword"`
-- Use HTML for formatting: `<h1>`, `<br>`, `<b>`, etc.
+## Update an existing note
+
+Find notes by name with `first note whose name contains "keyword"`. Format content with HTML tags: `<h1>`, `<br>`, `<b>`, etc.
+
 ```bash
 osascript -e 'tell application "Notes"
     set theNote to first note whose name contains "keyword"
@@ -22,5 +21,13 @@ osascript -e 'tell application "Notes"
 end tell'
 ```
 
-## CC Status note
-There is a persistent "CC Status" note (search for name contains "CC Status"). Use this to update Nikolai on progress during long tasks. Update it with current status when starting and finishing work.
+## Update the CC Status note
+
+At the start and end of long tasks, update the "CC Status" note with your current progress:
+
+```bash
+osascript -e 'tell application "Notes"
+    set theNote to first note whose name contains "CC Status"
+    set body of theNote to "<h1>CC Status</h1><br>Status update here"
+end tell'
+```
